@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
 interface HeroProps {
-  language: 'fr' | 'en';
+  language: "fr" | "en";
 }
 
 const Hero = ({ language }: HeroProps) => {
@@ -10,20 +10,22 @@ const Hero = ({ language }: HeroProps) => {
     en: {
       greeting: "Hello, I'm",
       name: "ES-SDIKI MAROUANE",
-      role: "Data Science & IoT Engineering Student",
-      description: "Specializing in web development, mobile development, and data science.",
-      cta: "View My Work"
+      role: "Data Science & IoT Engineering Student (IDSIT Program)",
+      description:
+        "Specializing in web development, mobile development, data science, and cybersecurity.",
+      cta: "View My Work",
     },
     fr: {
       greeting: "Bonjour, Je suis",
       name: "ES-SDIKI MAROUANE",
-      role: "Étudiant en Data Science & IoT",
-      description: "Spécialisé en développement web, développement mobile et data science.",
-      cta: "Voir Mon Travail"
-    }
+      role: "Étudiant en Data Science & IoT (IDSIT)",
+      description:
+        "Spécialisé en développement web, développement mobile, data science et cybersécurité.",
+      cta: "Voir Mon Travail",
+    },
   };
 
-  const text = language === 'fr' ? content.fr : content.en;
+  const text = language === "fr" ? content.fr : content.en;
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-white to-blue-50 dark:from-tech-darkblue dark:to-black">
@@ -43,13 +45,16 @@ const Hero = ({ language }: HeroProps) => {
             size="lg"
             className="bg-tech-blue hover:bg-tech-lightblue text-white"
             onClick={() => {
-              document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+              document
+                .querySelector("#about")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
             {text.cta}
             <ArrowDown className="ml-2 h-4 w-4" />
           </Button>
         </div>
+
         <div className="md:w-1/2 flex justify-center">
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-tech-blue to-tech-accent rounded-full blur opacity-30"></div>
@@ -70,7 +75,9 @@ const Hero = ({ language }: HeroProps) => {
           size="icon"
           className="rounded-full"
           onClick={() => {
-            document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+            document
+              .querySelector("#about")
+              ?.scrollIntoView({ behavior: "smooth" });
           }}
         >
           <ArrowDown className="h-6 w-6" />
