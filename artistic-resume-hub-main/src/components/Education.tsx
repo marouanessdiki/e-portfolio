@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface EducationProps {
   language: "fr" | "en";
@@ -56,44 +57,64 @@ const Education = ({ language }: EducationProps) => {
   return (
     <section
       id="education"
-      className="section-padding bg-gray-50 dark:bg-gray-900"
+      className="section-padding relative bg-slate-950 overflow-hidden"
     >
-      <div className="container mx-auto">
-        <h2 className="section-title">{text.title}</h2>
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+      <div className="container mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title text-white mb-4">{text.title}</h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-cyan-500 mb-12 rounded-full" />
+        </motion.div>
 
         <div className="space-y-8">
           {text.schools.map((school, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="card-shadow bg-white dark:bg-gray-800 overflow-hidden border-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
             >
-              <div className="flex flex-col md:flex-row">
-                <div className="bg-tech-blue text-white p-6 md:w-1/4 flex justify-center items-center">
-                  <GraduationCap className="h-12 w-12" />
-                </div>
-                <div className="md:w-3/4">
-                  <CardHeader className="pb-0">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start">
-                      <div>
-                        <h3 className="text-xl font-semibold">{school.name}</h3>
-                        <p className="text-tech-accent font-medium">
-                          {school.degree}
-                        </p>
+              <Card className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 overflow-hidden shadow-xl shadow-blue-500/5 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300">
+                <div className="flex flex-col md:flex-row">
+                  <motion.div
+                    className="bg-gradient-to-br from-blue-600 to-cyan-600 text-white p-6 md:w-1/4 flex justify-center items-center"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <GraduationCap className="h-12 w-12" />
+                  </motion.div>
+                  <div className="md:w-3/4">
+                    <CardHeader className="pb-0">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+                        <div>
+                          <h3 className="text-xl font-semibold text-white mb-2">{school.name}</h3>
+                          <p className="text-cyan-400 font-medium font-mono">
+                            {school.degree}
+                          </p>
+                        </div>
+                        <div className="text-gray-400 text-sm mt-2 md:mt-0 md:text-right font-mono">
+                          <p className="text-blue-400">{school.period}</p>
+                          <p>{school.location}</p>
+                        </div>
                       </div>
-                      <div className="text-gray-500 dark:text-gray-400 text-sm mt-2 md:mt-0 md:text-right">
-                        <p>{school.period}</p>
-                        <p>{school.location}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      {school.description}
-                    </p>
-                  </CardContent>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-300 leading-relaxed">
+                        {school.description}
+                      </p>
+                    </CardContent>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -7,7 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Code } from "lucide-react";
+import { Code, Shield, Cpu, Database, Zap, Lock } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProjectsProps {
   language: "fr" | "en";
@@ -213,199 +214,178 @@ const Projects = ({ language }: ProjectsProps) => {
 
   const text = language === "fr" ? content.fr : content.en;
 
+  const projectsData = [
+    {
+      ...text.devSecOpsProject,
+      icon: Shield,
+      gradient: "from-red-500 via-orange-500 to-yellow-500",
+      iconBg: "bg-red-500/10",
+      iconColor: "text-red-400",
+      badgeStyle: "bg-red-500/10 text-red-400 border-red-500/30",
+    },
+    {
+      ...text.smartGardenProject,
+      icon: Cpu,
+      gradient: "from-green-500 via-emerald-500 to-teal-500",
+      iconBg: "bg-green-500/10",
+      iconColor: "text-green-400",
+      badgeStyle: "bg-green-500/10 text-green-400 border-green-500/30",
+    },
+    {
+      ...text.pcConfigProject,
+      icon: Code,
+      gradient: "from-blue-500 via-cyan-500 to-indigo-500",
+      iconBg: "bg-blue-500/10",
+      iconColor: "text-blue-400",
+      badgeStyle: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+    },
+    {
+      ...text.supermarketProject,
+      icon: Lock,
+      gradient: "from-purple-500 via-pink-500 to-rose-500",
+      iconBg: "bg-purple-500/10",
+      iconColor: "text-purple-400",
+      badgeStyle: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+    },
+    {
+      ...text.logStorageProject,
+      icon: Database,
+      gradient: "from-yellow-500 via-amber-500 to-orange-500",
+      iconBg: "bg-yellow-500/10",
+      iconColor: "text-yellow-400",
+      badgeStyle: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30",
+    },
+  ];
+
   return (
     <section
       id="projects"
-      className="section-padding bg-white dark:bg-tech-darkblue"
+      className="section-padding relative bg-slate-900 overflow-hidden"
     >
-      <div className="container mx-auto">
-        <h2 className="section-title">{text.title}</h2>
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+      <motion.div
+        className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      <div className="container mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="section-title text-white mb-4">{text.title}</h2>
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-cyan-500 mb-12 rounded-full" />
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* DevSecOps Project */}
-          <Card className="card-shadow h-full border-0 overflow-hidden">
-            <div className="bg-gradient-to-r from-red-500 to-orange-500 h-3"></div>
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-xl">
-                    {text.devSecOpsProject.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">{text.devSecOpsProject.year}</p>
-                </div>
-                <div className="p-2 rounded-full bg-red-100 dark:bg-red-900/30">
-                  <Code className="h-5 w-5 text-red-500" />
-                </div>
-              </div>
-              <CardDescription>{text.devSecOpsProject.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {text.devSecOpsProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-              {text.devSecOpsProject.technologies.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-red-50 dark:bg-red-900/20 text-red-500 border-red-500"
+          {projectsData.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <motion.div
+                  whileHover={{
+                    y: -10,
+                    rotateX: 5,
+                    rotateY: 5,
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  {tech}
-                </Badge>
-              ))}
-            </CardFooter>
-          </Card>
+                  <Card className="h-full border-0 overflow-hidden bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 shadow-xl shadow-blue-500/5 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300">
+                    {/* Animated gradient top bar */}
+                    <motion.div
+                      className={`h-1 bg-gradient-to-r ${project.gradient}`}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 + 0.3, duration: 0.8 }}
+                    />
 
-          {/* Smart Garden Project */}
-          <Card className="card-shadow h-full border-0 overflow-hidden">
-            <div className="bg-gradient-to-r from-tech-accent to-green-300 h-3"></div>
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-xl">
-                    {text.smartGardenProject.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">{text.smartGardenProject.year}</p>
-                </div>
-                <div className="p-2 rounded-full bg-green-100 dark:bg-green-900/30">
-                  <Code className="h-5 w-5 text-tech-accent" />
-                </div>
-              </div>
-              <CardDescription>{text.smartGardenProject.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {text.smartGardenProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-              {text.smartGardenProject.technologies.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-green-50 dark:bg-green-900/20 text-tech-accent border-tech-accent"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </CardFooter>
-          </Card>
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <CardTitle className="text-xl text-white mb-1 hover:text-cyan-400 transition-colors">
+                            {project.title}
+                          </CardTitle>
+                          <motion.p
+                            className="text-sm text-gray-400 font-mono bg-slate-900/50 inline-block px-2 py-1 rounded"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + 0.4 }}
+                          >
+                            {project.year}
+                          </motion.p>
+                        </div>
+                        <motion.div
+                          className={`p-3 rounded-lg ${project.iconBg} border border-blue-500/20`}
+                          whileHover={{ rotate: 360, scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          <Icon className={`h-6 w-6 ${project.iconColor}`} />
+                        </motion.div>
+                      </div>
+                      <CardDescription className="text-gray-300 mt-3">
+                        {project.description}
+                      </CardDescription>
+                    </CardHeader>
 
-          {/* PC Config Project */}
-          <Card className="card-shadow h-full border-0 overflow-hidden">
-            <div className="bg-gradient-to-r from-tech-blue to-tech-lightblue h-3"></div>
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-xl">
-                    {text.pcConfigProject.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">{text.pcConfigProject.year}</p>
-                </div>
-                <div className="p-2 rounded-full bg-blue-100 dark:bg-blue-900/30">
-                  <Code className="h-5 w-5 text-tech-blue" />
-                </div>
-              </div>
-              <CardDescription>{text.pcConfigProject.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {text.pcConfigProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-              {text.pcConfigProject.technologies.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-blue-50 dark:bg-blue-900/20 text-tech-blue border-tech-blue"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </CardFooter>
-          </Card>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {project.features.map((feature, fIndex) => (
+                          <motion.li
+                            key={fIndex}
+                            className="flex items-start text-sm text-gray-400"
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + fIndex * 0.05 }}
+                          >
+                            <span className="text-cyan-400 mr-2 mt-1">▹</span>
+                            <span className="flex-1">{feature}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </CardContent>
 
-          {/* Supermarket Project */}
-          <Card className="card-shadow h-full border-0 overflow-hidden">
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3"></div>
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-xl">
-                    {text.supermarketProject.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">{text.supermarketProject.year}</p>
-                </div>
-                <div className="p-2 rounded-full bg-purple-100 dark:bg-purple-900/30">
-                  <Code className="h-5 w-5 text-purple-500" />
-                </div>
-              </div>
-              <CardDescription>{text.supermarketProject.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {text.supermarketProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-              {text.supermarketProject.technologies.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-purple-50 dark:bg-purple-900/20 text-purple-500 border-purple-500"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </CardFooter>
-          </Card>
-
-          {/* Log Storage Project */}
-          <Card className="card-shadow h-full border-0 overflow-hidden">
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 h-3"></div>
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-xl">
-                    {text.logStorageProject.title}
-                  </CardTitle>
-                  <p className="text-sm text-gray-500 mt-1">{text.logStorageProject.year}</p>
-                </div>
-                <div className="p-2 rounded-full bg-yellow-100 dark:bg-yellow-900/30">
-                  <Code className="h-5 w-5 text-yellow-600" />
-                </div>
-              </div>
-              <CardDescription>{text.logStorageProject.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                {text.logStorageProject.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-              {text.logStorageProject.technologies.map((tech, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-yellow-50 dark:bg-yellow-900/20 text-yellow-600 border-yellow-500"
-                >
-                  {tech}
-                </Badge>
-              ))}
-            </CardFooter>
-          </Card>
+                    <CardFooter className="flex flex-wrap gap-2 border-t border-blue-500/10 pt-4">
+                      {project.technologies.map((tech, tIndex) => (
+                        <motion.div
+                          key={tIndex}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + tIndex * 0.03 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                        >
+                          <Badge
+                            variant="outline"
+                            className={`${project.badgeStyle} font-mono text-xs`}
+                          >
+                            {tech}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </CardFooter>
+                  </Card>
+                </motion.div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
