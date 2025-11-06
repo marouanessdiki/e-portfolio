@@ -10,9 +10,9 @@ const About = ({ language }: AboutProps) => {
     en: {
       title: "About Me",
       summary:
-        "As a second-year engineering student in Data Science and Internet of Things (IDSIT) at ENSIAS, I am currently looking for a skill-enhancing internship starting in June. With strong technical and theoretical foundations, I am eager to deepen my knowledge and strengthen my professional experience, particularly in web development, mobile development, and cybersecurity.",
+        "Engineering student at ENSIAS specializing in DevOps/DevSecOps and Full-Stack development. With two internships under my belt, I design innovative solutions that combine security and performance. My ability to quickly adapt allows me to transform technical challenges into opportunities.",
       looking:
-        "Looking for a two-month skill-enhancing internship starting in June (web, mobile development, or cybersecurity).",
+        "Looking for a PFE internship in Full-Stack Development or DevOps/DevSecOps to apply my skills and continue growing.",
       contactInfo: "Contact Information",
       email: "Email",
       phone: "Phone",
@@ -23,19 +23,21 @@ const About = ({ language }: AboutProps) => {
       arabic: "Arabic",
       fluent: "Fluent",
       native: "Native",
-      volunteer: "Volunteer Experience",
-      volunteerItems: [
-        "Member of the CINDH Club: National Initiative for Human Development Club",
-        "Member of the INSEC Club: The Information Security Club of ENSIAS",
-        "Member of the IT Club: ENSIAS IT Club",
+      interests: "Interests",
+      interestItems: [
+        "Cybersecurity & DevSecOps",
+        "Artificial Intelligence & LLMs",
+        "Cloud Computing & Infrastructure as Code",
+        "Member of INSEC (Information Security Club)",
+        "Member of ENSIAS IT Club",
       ],
     },
     fr: {
       title: "À Propos de Moi",
       summary:
-        "En tant qu'étudiant ingénieur en deuxième année de Data Science et Internet des Objets (IDSIT) à l'ENSIAS, je suis actuellement à la recherche d'un stage de perfectionnement à partir du mois de juin. Fort de solides bases techniques et théoriques, je souhaite approfondir mes connaissances et consolider mon expérience professionnelle, notamment dans le développement web, mobile et la cybersécurité.",
+        "Élève ingénieur à l'ENSIAS spécialisé en DevOps/DevSecOps et développement Full-Stack. Fort de deux stages, je conçois des solutions innovantes alliant sécurité et performance. Ma capacité d'adaptation rapide me permet de transformer les défis techniques en opportunités.",
       looking:
-        "À la recherche d'un stage de perfectionnement de deux mois à partir de juin (développement web, mobile ou cybersécurité).",
+        "À la recherche d'un stage PFE en développement Full-Stack ou DevOps/DevSecOps pour appliquer mes compétences et continuer à progresser.",
       contactInfo: "Informations de Contact",
       email: "Email",
       phone: "Téléphone",
@@ -46,11 +48,13 @@ const About = ({ language }: AboutProps) => {
       arabic: "Arabe",
       fluent: "Courant",
       native: "Natif",
-      volunteer: "Expérience Bénévole",
-      volunteerItems: [
-        "Membre du club CINDH : Club d’Initiative Nationale du Développement Humain",
-        "Membre du club INSEC : The Information Security Club of ENSIAS",
-        "Membre du club IT : ENSIAS IT Club",
+      interests: "Centres d'Intérêt",
+      interestItems: [
+        "Cybersécurité & DevSecOps",
+        "Intelligence Artificielle & LLMs",
+        "Cloud Computing & Infrastructure as Code",
+        "Membre du club INSEC (Sécurité de l'Information)",
+        "Membre du club IT ENSIAS",
       ],
     },
   };
@@ -78,9 +82,9 @@ const About = ({ language }: AboutProps) => {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-4">{text.volunteer}</h3>
+              <h3 className="text-xl font-semibold mb-4">{text.interests}</h3>
               <ul className="space-y-2 list-disc list-inside">
-                {text.volunteerItems.map((item, index) => (
+                {text.interestItems.map((item, index) => (
                   <li key={index} className="text-gray-700 dark:text-gray-300">
                     {item}
                   </li>
@@ -132,7 +136,7 @@ const About = ({ language }: AboutProps) => {
                       <p className="text-sm text-gray-500 dark:text-gray-400">
                         {text.location}
                       </p>
-                      <p>MAROUANE ES-SDIKI</p>
+                      <p>Rabat, Morocco</p>
                     </div>
                   </div>
                 </div>

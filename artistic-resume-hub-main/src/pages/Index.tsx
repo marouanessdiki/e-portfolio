@@ -3,6 +3,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
@@ -16,6 +17,7 @@ const Index = () => {
       <Navbar language={language} setLanguage={setLanguage} />
       <Hero language={language} />
       <About language={language} />
+      <Experience language={language} />
       <Education language={language} />
       <Projects language={language} />
       <Skills language={language} />
@@ -23,7 +25,7 @@ const Index = () => {
       
       <footer className="bg-tech-darkblue text-white py-6">
         <div className="container mx-auto text-center">
-          <p>© {new Date().getFullYear()} ES-SDIKI MAROUANE. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} MAROUANE ES-SDIKI. All rights reserved.</p>
         </div>
       </footer>
     </div>

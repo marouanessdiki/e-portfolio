@@ -11,28 +11,20 @@ const Education = ({ language }: EducationProps) => {
       title: "Education",
       schools: [
         {
-          name: "National School of Computer Science and Systems Analysis (ENSIAS)",
-          degree: "Engineering in Data Science and IoT (IDSIT)",
-          period: "September 2023 - Present",
+          name: "École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS)",
+          degree: "Engineering Cycle - Data Science & IoT",
+          period: "2023 - 2026",
           location: "Rabat, Morocco",
           description:
-            "Currently specializing in Data Science and Internet of Things (IoT) technologies at ENSIAS.",
+            "3rd year engineering student specializing in Data Science, IoT, Full-Stack Development, and DevOps/DevSecOps. Engaged in advanced projects integrating security, performance, and innovation.",
         },
         {
-          name: "Preparatory Classes for Engineering Schools (CPGE) - TSI",
-          degree: "Industrial Science and Technology",
+          name: "Classes Préparatoires aux Grandes Écoles (CPGE)",
+          degree: "Technology and Industrial Sciences (TSI)",
           period: "2021 - 2023",
-          location: "CPGE Béni Mellal, Morocco",
+          location: "Beni Mellal, Morocco",
           description:
-            "Two-year intensive program in Industrial Science and Technology (TSI) preparing for engineering school entrance exams.",
-        },
-        {
-          name: "High School Diploma",
-          degree: "Mechanical Science and Technology",
-          period: "June 2021",
-          location: "Lycée Technique THIGHNARI, Fquih Ben Salah, Morocco",
-          description:
-            "Graduated with a focus on Mechanical Sciences and Technologies.",
+            "Two-year intensive preparatory program in Technology and Industrial Sciences, preparing for competitive engineering school entrance exams.",
         },
       ],
     },
@@ -40,27 +32,20 @@ const Education = ({ language }: EducationProps) => {
       title: "Formation",
       schools: [
         {
-          name: "École Nationale Supérieure de l'Informatique et de l'Analyse des Systèmes (ENSIAS)",
-          degree: "Ingénierie en Data Science et IoT (IDSIT)",
-          period: "Septembre 2023 - Présent",
+          name: "École Nationale Supérieure d'Informatique et d'Analyse des Systèmes (ENSIAS)",
+          degree: "Cycle Ingénieur - Data Science & IoT",
+          period: "2023 - 2026",
           location: "Rabat, Maroc",
           description:
-            "En cours de spécialisation en Data Science et Internet des Objets (IoT) à l'ENSIAS.",
+            "Élève ingénieur en 3ème année spécialisé en Data Science, IoT, développement Full-Stack et DevOps/DevSecOps. Engagé dans des projets avancés intégrant sécurité, performance et innovation.",
         },
         {
-          name: "Classes Préparatoires aux Grandes Écoles (CPGE) - TSI",
-          degree: "Technologies et Sciences Industrielles",
+          name: "Classes Préparatoires aux Grandes Écoles (CPGE)",
+          degree: "Technologies et Sciences Industrielles (TSI)",
           period: "2021 - 2023",
-          location: "CPGE Béni Mellal, Maroc",
+          location: "Beni Mellal, Maroc",
           description:
-            "Programme intensif de deux ans en Technologies et Sciences Industrielles (TSI) préparant aux concours d'entrée aux grandes écoles d'ingénieurs.",
-        },
-        {
-          name: "Baccalauréat",
-          degree: "Sciences et Technologies Mécaniques",
-          period: "Juin 2021",
-          location: "Lycée Technique THIGHNARI, Fquih Ben Salah, Maroc",
-          description: "Diplômé en Sciences et Technologies Mécaniques.",
+            "Programme préparatoire intensif de deux ans en Technologies et Sciences Industrielles, préparant aux concours d'entrée des grandes écoles d'ingénieurs.",
         },
       ],
     },

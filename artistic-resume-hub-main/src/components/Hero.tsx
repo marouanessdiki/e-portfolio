@@ -9,18 +9,18 @@ const Hero = ({ language }: HeroProps) => {
   const content = {
     en: {
       greeting: "Hello, I'm",
-      name: "ES-SDIKI MAROUANE",
-      role: "Data Science & IoT Engineering Student (IDSIT Program)",
+      name: "MAROUANE ES-SDIKI",
+      role: "Full-Stack Developer & DevOps Engineer",
       description:
-        "Specializing in web development, mobile development, data science, and cybersecurity.",
+        "3rd year engineering student at ENSIAS specializing in Full-Stack Development and DevOps/DevSecOps. Passionate about building secure, scalable, and high-performance solutions.",
       cta: "View My Work",
     },
     fr: {
       greeting: "Bonjour, Je suis",
-      name: "ES-SDIKI MAROUANE",
-      role: "Étudiant en Data Science & IoT (IDSIT)",
+      name: "MAROUANE ES-SDIKI",
+      role: "Développeur Full-Stack & Ingénieur DevOps",
       description:
-        "Spécialisé en développement web, développement mobile, data science et cybersécurité.",
+        "Élève ingénieur en 3ème année à l'ENSIAS spécialisé en développement Full-Stack et DevOps/DevSecOps. Passionné par la création de solutions sécurisées, évolutives et performantes.",
       cta: "Voir Mon Travail",
     },
   };
