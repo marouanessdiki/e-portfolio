@@ -179,7 +179,7 @@ const Contact = ({ language }: ContactProps) => {
                     GitHub
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/marouane-es-sdiki-273a7725a/"
+                    href="https://www.linkedin.com/in/marouane-es-sdiki/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-tech-blue dark:text-gray-400 dark:hover:text-tech-lightblue transition-colors"

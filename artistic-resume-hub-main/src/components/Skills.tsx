@@ -11,79 +11,62 @@ const Skills = ({ language }: SkillsProps) => {
     en: {
       title: "Skills",
       programmingLanguages: "Programming Languages",
-      webDevelopment: "Web Development",
-      mobileDevelopment: "Mobile Development",
-      dataScience: "Data Science & ML",
-      devOps: "DevOps & Tools",
+      webDevelopment: "Web/Mobile Development",
+      devOps: "DevOps/DevSecOps",
       databases: "Databases",
-      networking: "Networking & Cybersecurity",
+      aiMonitoring: "AI & Monitoring",
     },
     fr: {
       title: "Compétences",
       programmingLanguages: "Langages de Programmation",
-      webDevelopment: "Développement Web",
-      mobileDevelopment: "Développement Mobile",
-      dataScience: "Data Science & ML",
-      devOps: "DevOps & Outils",
+      webDevelopment: "Développement Web/Mobile",
+      devOps: "DevOps/DevSecOps",
       databases: "Bases de Données",
-      networking: "Réseaux et Cybersécurité",
+      aiMonitoring: "IA & Monitoring",
     },
   };
 
   const text = language === "fr" ? content.fr : content.en;
 
   const programmingLanguages = [
-    { name: "Python", level: 90 },
-    { name: "Java", level: 85 },
-    { name: "C", level: 75 },
-    { name: "C++", level: 70 },
-    { name: "C#", level: 70 },
-    { name: "PHP", level: 80 },
+    { name: "Java", level: 90 },
+    { name: "Python", level: 85 },
     { name: "JavaScript", level: 85 },
-    { name: "TypeScript", level: 75 },
-    { name: "XML", level: 70 },
+    { name: "PHP", level: 80 },
+    { name: "C", level: 75 },
   ];
 
   const webDevelopment = [
-    { name: "HTML/CSS", level: 90 },
+    { name: "React.js", level: 90 },
+    { name: "Node.js / Express", level: 85 },
     { name: "Laravel", level: 85 },
-    { name: "React", level: 80 },
-    { name: "Tailwind", level: 75 },
-  ];
-
-  const mobileDevelopment = [
-    { name: "Android Studio", level: 75 },
-    { name: "React Native", level: 70 },
-    { name: "Unity (Mobile Games)", level: 65 },
-  ];
-
-  const dataScience = [
-    { name: "Machine Learning", level: 75 },
-    { name: "Tableau", level: 70 },
-    { name: "Data Visualization", level: 70 },
-    { name: "Anaconda", level: 70 },
+    { name: "Spring Boot", level: 80 },
+    { name: "Firebase", level: 75 },
   ];
 
   const devOps = [
-    { name: "Git/GitHub", level: 85 },
-    { name: "Overleaf (LaTeX)", level: 75 },
-    { name: "Photoshop", level: 65 },
-    { name: "Linux Basics", level: 70 },
+    { name: "Docker", level: 90 },
+    { name: "Jenkins", level: 85 },
+    { name: "Kubernetes", level: 80 },
+    { name: "GitHub Actions", level: 85 },
+    { name: "SonarQube", level: 80 },
+    { name: "Trivy", level: 75 },
+    { name: "Gitleaks", level: 75 },
+    { name: "OWASP ZAP", level: 75 },
   ];
 
   const databases = [
-    { name: "SQL", level: 90 },
-    { name: "MySQL", level: 85 },
-    { name: "MongoDB", level: 75 },
-    { name: "Neo4j", level: 70 },
-    { name: "NoSQL", level: 70 },
-    { name: "PL/SQL", level: 65 },
+    { name: "MySQL", level: 90 },
+    { name: "PostgreSQL", level: 85 },
+    { name: "MongoDB", level: 80 },
+    { name: "SQLite", level: 75 },
   ];
 
-  const networking = [
-    { name: "TCP/IP", level: 75 },
-    { name: "Networking Basics", level: 70 },
-    { name: "Cybersecurity Basics", level: 65 },
+  const aiMonitoring = [
+    { name: "OpenAI API", level: 85 },
+    { name: "LLMs & MCP", level: 80 },
+    { name: "Prometheus", level: 75 },
+    { name: "Grafana", level: 75 },
   ];
 
   const renderSkills = (skills: { name: string; level: number }[]) => (
@@ -109,18 +92,12 @@ const Skills = ({ language }: SkillsProps) => {
         <h2 className="section-title">{text.title}</h2>
 
         <Tabs defaultValue="programming" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 mb-8">
+          <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-8">
             <TabsTrigger value="programming" className="text-xs md:text-sm">
               {text.programmingLanguages}
             </TabsTrigger>
             <TabsTrigger value="web" className="text-xs md:text-sm">
               {text.webDevelopment}
-            </TabsTrigger>
-            <TabsTrigger value="mobile" className="text-xs md:text-sm">
-              {text.mobileDevelopment}
-            </TabsTrigger>
-            <TabsTrigger value="data" className="text-xs md:text-sm">
-              {text.dataScience}
             </TabsTrigger>
             <TabsTrigger value="devops" className="text-xs md:text-sm">
               {text.devOps}
@@ -128,8 +105,8 @@ const Skills = ({ language }: SkillsProps) => {
             <TabsTrigger value="databases" className="text-xs md:text-sm">
               {text.databases}
             </TabsTrigger>
-            <TabsTrigger value="networking" className="text-xs md:text-sm">
-              {text.networking}
+            <TabsTrigger value="aimonitoring" className="text-xs md:text-sm">
+              {text.aiMonitoring}
             </TabsTrigger>
           </TabsList>
 
@@ -150,22 +127,6 @@ const Skills = ({ language }: SkillsProps) => {
               </Card>
             </TabsContent>
 
-            <TabsContent value="mobile" className="mt-0">
-              <Card className="border-0 shadow-none">
-                <CardContent className="p-0">
-                  {renderSkills(mobileDevelopment)}
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="data" className="mt-0">
-              <Card className="border-0 shadow-none">
-                <CardContent className="p-0">
-                  {renderSkills(dataScience)}
-                </CardContent>
-              </Card>
-            </TabsContent>
-
             <TabsContent value="devops" className="mt-0">
               <Card className="border-0 shadow-none">
                 <CardContent className="p-0">
@@ -182,10 +143,10 @@ const Skills = ({ language }: SkillsProps) => {
               </Card>
             </TabsContent>
 
-            <TabsContent value="networking" className="mt-0">
+            <TabsContent value="aimonitoring" className="mt-0">
               <Card className="border-0 shadow-none">
                 <CardContent className="p-0">
-                  {renderSkills(networking)}
+                  {renderSkills(aiMonitoring)}
                 </CardContent>
               </Card>
             </TabsContent>
